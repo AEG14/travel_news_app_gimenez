@@ -22,7 +22,9 @@ final tGellixMedium = TextStyle(
 final tGellixRegular = TextStyle(
     fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w400);
 
-//borders!!
+//borders styles!!
 
 final tBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none);
+
+const Color borderColor = Color(0xffEEEEEE);
