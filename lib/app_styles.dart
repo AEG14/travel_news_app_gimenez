@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 //background colors!!!!
 const Color tWhite = Color(0xFFFFFFFF);
@@ -22,3 +21,8 @@ final tGellixMedium = TextStyle(
     fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w500);
 final tGellixRegular = TextStyle(
     fontFamily: 'Gellix', color: tMidnightBlue, fontWeight: FontWeight.w400);
+
+//borders!!
+
+final tBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none);
