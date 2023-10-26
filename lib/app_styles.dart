@@ -9,6 +9,7 @@ const Color tGrey2 = Color(0xFFA7A7A7);
 
 const Color tBlue = Color(0xFF5474FD);
 const Color tPaleBlue = Color(0xFF83B1FF);
+const Color tLightPaleBlue = Color(0xFFC1D4F9);
 const Color tMidnightBlue = Color(0xFF19202D);
 const Color tRed = Color(0xFFEF2121);
 
