@@ -142,6 +142,9 @@ class TravelDetailsPage extends StatelessWidget {
             ),
             SizedBox(
               height: SizeConfig.blockSizeVertical! * 5,
+            ),
+            SizedBox(
+              height: SizeConfig.blockSizeVertical! * 30,
             )
           ],
         ),

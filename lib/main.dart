@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'pages/my_home_page.dart';
 import '../app_styles.dart';
 import '../widgets/bot_nav_bar_card.dart';
-// import 'pages/travel_details_page.dart';
-// import 'pages/user_timeline_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +38,6 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: tWhite2,
         body: const MyHomePage(),
       ),
-      //
     );
   }
 }

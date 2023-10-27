@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../app_styles.dart';
 import '../size_config.dart';
+import '../models/short_data.dart';
 
 class ShortNewsCard extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class ShortNewsCard extends StatelessWidget {
         height: 88,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 10,
+          itemCount: shortNewsData.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
             return Padding(
@@ -44,8 +45,17 @@ class ShortNewsCard extends StatelessWidget {
                       ),
                       child: Stack(
                         children: [
-                          Image.asset('assets/images/Iceberg.png',
-                              fit: BoxFit.cover),
+                          Center(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: Image.asset(
+                                shortNewsData[index].shortNewsImage,
+                                fit: BoxFit.cover,
+                                height: 70,
+                                width: 70,
+                              ),
+                            ),
+                          ),
                           Center(
                             child: SvgPicture.asset(
                                 'assets/images/play_icon.svg',
@@ -59,31 +69,23 @@ class ShortNewsCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       child: Flexible(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Top Trending',
-                                      style: tGellixSemiBold.copyWith(
-                                        fontSize:
-                                            SizeConfig.blockSizeHorizontal! * 3,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Islands in 2022',
-                                      style: tGellixSemiBold.copyWith(
-                                        fontSize:
-                                            SizeConfig.blockSizeHorizontal! * 3,
-                                      ),
-                                    ),
-                                  ],
+                                Text(
+                                  shortNewsData[index].shortNewsHeader,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: tGellixSemiBold.copyWith(
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal! * 3,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: SizeConfig.blockSizeHorizontal! * 2,
                                 ),
                                 Row(
                                   children: [
@@ -96,7 +98,7 @@ class ShortNewsCard extends StatelessWidget {
                                     ),
                                     SizedBox(width: 4.36),
                                     Text(
-                                      '40,999',
+                                      shortNewsData[index].viewCount,
                                       style: tGellixRegular.copyWith(
                                         color: tGrey,
                                         fontSize:
