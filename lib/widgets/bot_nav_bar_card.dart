@@ -47,7 +47,6 @@ class BotNavBarCard extends StatelessWidget {
       ],
       currentIndex: selectedIndex,
       onTap: onItemTapped,
-      // Adjust the height as needed
     );
   }
 }

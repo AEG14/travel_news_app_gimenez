@@ -29,9 +29,7 @@ class PostDetail {
   final String postImage;
   final String postHeader;
   final String postDate;
-  final String carouselImage1;
-  final String carouselImage2;
-  final String carouselImage3;
+  final List<String> carouselItems;
   final String carouselHeader;
   final String carouselDate;
   final String carouselMinRead;
@@ -44,9 +42,7 @@ class PostDetail {
     required this.postImage,
     required this.postHeader,
     required this.postDate,
-    required this.carouselImage1,
-    required this.carouselImage2,
-    required this.carouselImage3,
+    required this.carouselItems,
     required this.carouselHeader,
     required this.carouselDate,
     required this.carouselMinRead,
@@ -81,10 +77,12 @@ List<User> topUsers = [
         postHeader:
             'Feel the thrill on the only\nsurf simulator in Maldives 2022',
         postDate: 'July 21 2022',
-        carouselImage1: 'assets/images/maldives3.jpg',
-        carouselImage2: 'assets/images/Rectangle.png',
-        carouselImage3: 'assets/images/maldives2.jpg',
-        carouselHeader: 'Unravel Mysteries of the Maldives',
+        carouselItems: [
+          'assets/images/maldives3.jpg',
+          'assets/images/Rectangle.png',
+          'assets/images/maldives2.jpg',
+        ],
+        carouselHeader: 'Unravel Mysteries\nof the Maldives',
         carouselDate: 'July 21',
         carouselMinRead: '8 min read',
         carouselDescription:
@@ -97,9 +95,11 @@ List<User> topUsers = [
         postImage: 'assets/images/popularImage2.png',
         postHeader: 'Putin to host ceremony',
         postDate: 'Oct 12, 2023',
-        carouselImage1: 'carousel1.jpg',
-        carouselImage2: 'carousel2.jpg',
-        carouselImage3: 'carousel3.jpg',
+        carouselItems: [
+          'assets/images/timelineImage2.png',
+          'assets/images/timelineImage1.png',
+          'assets/images/MyTravel5.jpg',
+        ],
         carouselHeader:
             'Putin to host ceremony\nannexing occupied Ukranian country which gives more problems and headaches',
         carouselDate: 'Oct 15, 2023',
@@ -132,13 +132,16 @@ List<User> topUsers = [
         postHeader:
             'A Journey to the Mountains\n with the Greatest and Mightiest Aytan!',
         postDate: 'Oct 25 2021',
-        carouselImage1: 'assets/images/MyTravel1.jpg',
-        carouselImage2: 'assets/images/MyTravel3.jpg',
-        carouselImage3: 'assets/images/MyTravel2.jpg',
+        carouselItems: [
+          'assets/images/MyTravel1.jpg',
+          'assets/images/MyTravel3.jpg',
+          'assets/images/MyTravel2.jpg',
+        ],
         carouselHeader: 'Mountain Adventure',
         carouselDate: 'Oct 25',
         carouselMinRead: '7 min read',
-        carouselDescription: 'Bike Adventure in the Mountains here in Cebu',
+        carouselDescription:
+            'Hiking in the Mountains here in Cebu is a great way to relax, it helps calm your mind, though it leaves your legs shaking afterwards. But the idea of inhaling peace and putting your senses in order is amazing',
         timelineCategory: 'Love',
         timelineDate: '25th Oct',
         timelineTime: '06:02 am',
@@ -147,9 +150,11 @@ List<User> topUsers = [
         postImage: 'assets/images/MyTravel7.jpg',
         postHeader: 'Random thing to say here',
         postDate: 'Oct 15 2023',
-        carouselImage1: 'assets/images/MyTravel7.jpg',
-        carouselImage2: 'assets/images/MyTravel6.jpg',
-        carouselImage3: 'assets/images/MyTravel8.jpg',
+        carouselItems: [
+          'assets/images/MyTravel7.jpg'
+              'assets/images/MyTravel6.jpg',
+          'assets/images/MyTravel8.jpg',
+        ],
         carouselHeader: 'My Tech Stuff',
         carouselDate: 'Oct 15',
         carouselMinRead: '7 min read',

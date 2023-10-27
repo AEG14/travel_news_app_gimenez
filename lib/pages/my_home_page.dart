@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
 import '../app_styles.dart';
 import '../size_config.dart';
 import '../widgets/list_of_travel_posts.dart';

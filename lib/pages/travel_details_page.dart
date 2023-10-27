@@ -3,141 +3,159 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../app_styles.dart';
 import '../size_config.dart';
+import '../models/user_data.dart';
 
-class TravelDetailsPage extends StatefulWidget {
-  const TravelDetailsPage({Key? key}) : super(key: key);
+class TravelDetailsPage extends StatelessWidget {
+  final User user;
+  final int userIndex;
 
-  @override
-  State<TravelDetailsPage> createState() => _TravelDetailsPageState();
-}
-
-class _TravelDetailsPageState extends State<TravelDetailsPage> {
+  TravelDetailsPage({required this.user, required this.userIndex, Key? key})
+      : super(key: key);
+  // const TravelDetailsPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final List<String> carouselItems = user.postDetailsData[0].carouselItems;
     SizeConfig().init(context);
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: SizeConfig.blockSizeVertical! * 50,
-            child: Stack(
-              children: [
-                const FullScreenSlider(),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    height: 40,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(42),
-                          topRight: Radius.circular(42)),
-                      color: tWhite2,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: SizeConfig.blockSizeVertical! * 50,
+              child: Stack(
+                children: [
+                  FullScreenSlider(
+                      carouselItems: user.postDetailsData[0].carouselItems),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      height: 40,
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(42),
+                            topRight: Radius.circular(42)),
+                        color: tWhite2,
+                      ),
                     ),
                   ),
-                ),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 60),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(color: tWhite)),
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset(
-                              'assets/images/arrow_back_icon.svg'),
-                        ),
-                        Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(color: tWhite)),
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset(
-                              'assets/images/bookmark_white_icon.svg'),
-                        ),
-                      ],
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 60),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(color: tWhite)),
+                              padding: const EdgeInsets.all(12),
+                              child: SvgPicture.asset(
+                                  'assets/images/arrow_back_icon.svg'),
+                            ),
+                          ),
+                          Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(color: tWhite)),
+                            padding: const EdgeInsets.all(12),
+                            child: SvgPicture.asset(
+                                'assets/images/bookmark_white_icon.svg'),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          ),
-          Container(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              transform: Matrix4.translationValues(0, -14, 0),
+            Container(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                transform: Matrix4.translationValues(0, -14, 0),
+                child: Text(
+                  user.postDetailsData[0].carouselHeader,
+                  style: tGellixBold.copyWith(
+                      fontSize: SizeConfig.blockSizeHorizontal! * 7),
+                )),
+            Container(
+              margin: const EdgeInsets.fromLTRB(30, 6, 30, 20),
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.blockSizeHorizontal! * 2.5),
+              height: 54,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: borderColor)),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 13,
+                    backgroundColor: tBlue,
+                    backgroundImage: AssetImage(
+                        // 'assets/images/maldives2.jpg',
+                        user.userProfilePicture),
+                  ),
+                  SizedBox(
+                    width: SizeConfig.blockSizeHorizontal! * 2.5,
+                  ),
+                  Text(
+                    // 'Keanu Carpent  May 17  •  8 min read',
+                    user.firstName +
+                        ' ' +
+                        user.lastName +
+                        ' ' +
+                        user.postDetailsData[0].carouselDate +
+                        '  •  ' +
+                        user.postDetailsData[0].carouselMinRead,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: tGellixRegular.copyWith(
+                        color: tGrey,
+                        fontSize: SizeConfig.blockSizeHorizontal! * 3),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30, right: 24),
               child: Text(
-                'Unravel Mysteries\nof the Maldives',
-                style: tGellixBold.copyWith(
-                    fontSize: SizeConfig.blockSizeHorizontal! * 7),
-              )),
-          Container(
-            margin: const EdgeInsets.fromLTRB(30, 6, 30, 20),
-            padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.blockSizeHorizontal! * 2.5),
-            height: 54,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: borderColor)),
-            child: Row(
-              children: [
-                const CircleAvatar(
-                  radius: 13,
-                  backgroundColor: tBlue,
-                  backgroundImage:
-                      AssetImage('assets/images/sampleProfile3.png'),
-                ),
-                SizedBox(
-                  width: SizeConfig.blockSizeHorizontal! * 2.5,
-                ),
-                Text(
-                  'Keanu Carpent  May 17  •  8 min read',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: tGellixRegular.copyWith(
-                      color: tGrey,
-                      fontSize: SizeConfig.blockSizeHorizontal! * 3),
-                ),
-              ],
+                user.postDetailsData[0].carouselDescription,
+                style: tGellixMedium.copyWith(
+                    fontSize: SizeConfig.blockSizeHorizontal! * 4),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30, right: 24),
-            child: Text(
-              "Just say anything, George, say what ever's natural, the first thing that comes to your mind. Take that you mutated son-of-a-bitch. My pine, why you. You space bastard, you killed a pine. You do? Yeah,it's 8:00. Hey, McFly, I thought I told you never ",
-              style: tGellixMedium.copyWith(
-                  fontSize: SizeConfig.blockSizeHorizontal! * 4),
-            ),
-          ),
-          SizedBox(
-            height: SizeConfig.blockSizeVertical! * 5,
-          )
-        ],
+            SizedBox(
+              height: SizeConfig.blockSizeVertical! * 5,
+            )
+          ],
+        ),
       ),
     );
   }
 }
 
-final List<String> imageList = [
-  'assets/images/MyTravel1.jpg',
-  'assets/images/Rectangle.png',
-  'assets/images/MyTravel2.jpg'
-];
+// final List<String> widget.carouselItems = [
+//   'assets/images/MyTravel1.jpg',
+//   'assets/images/Rectangle.png',
+//   'assets/images/MyTravel2.jpg'
+// ];
 
 class FullScreenSlider extends StatefulWidget {
-  const FullScreenSlider({Key? key}) : super(key: key);
-
+  // const FullScreenSlider({Key? key}) : super(key: key);
+  final List<String> carouselItems;
+  FullScreenSlider({required this.carouselItems, Key? key}) : super(key: key);
   @override
   State<FullScreenSlider> createState() => _FullScreenSliderState();
 }
@@ -162,7 +180,7 @@ class _FullScreenSliderState extends State<FullScreenSlider> {
             },
             initialPage: _current,
           ),
-          items: imageList
+          items: widget.carouselItems
               .map((item) => Container(
                     height: SizeConfig.blockSizeVertical! * 50,
                     child: Image.asset(
@@ -181,7 +199,7 @@ class _FullScreenSliderState extends State<FullScreenSlider> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: imageList
+              children: widget.carouselItems
                   .asMap()
                   .entries
                   .map(

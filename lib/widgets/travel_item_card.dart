@@ -46,14 +46,9 @@ class TravelItemCard extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  // Use Navigator to push the travel details page and pass the user index
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
+                  Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) =>
-                          TravelDetailsPage(user: user, userIndex: userIndex),
-                    ),
-                  );
+                          TravelDetailsPage(user: user, userIndex: userIndex)));
                 },
                 child: Container(
                   height: 164,
@@ -133,3 +128,23 @@ class TravelItemCard extends StatelessWidget {
     );
   }
 }
+
+// Route _createRoute() {
+//   return PageRouteBuilder(
+//     pageBuilder: (context, animation, secondaryAnimation) =>
+//         TravelDetailsPage(), 
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//       const begin = Offset(1.0, 0.0); 
+//       const end = Offset.zero;
+//       const curve = Curves.easeInOut;
+
+//       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+//       var offsetAnimation = animation.drive(tween);
+
+//       return SlideTransition(
+//         position: offsetAnimation,
+//         child: child,
+//       );
+//     },
+//   );
+// }

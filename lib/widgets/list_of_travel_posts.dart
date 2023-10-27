@@ -16,7 +16,7 @@ class ListOfTravelItems extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           User item = topUsers[index];
-          return TravelItemCard(user: item);
+          return TravelItemCard(user: item, userIndex: index);
         },
       ),
     );
