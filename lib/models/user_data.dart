@@ -92,7 +92,7 @@ List<User> topUsers = [
         timelineTime: '09:32 am',
       ),
       PostDetail(
-        postImage: 'assets/images/popularImage2.png',
+        postImage: 'assets/images/popularImage2.jpg',
         postHeader: 'Putin to host ceremony',
         postDate: 'Oct 12, 2023',
         carouselItems: [

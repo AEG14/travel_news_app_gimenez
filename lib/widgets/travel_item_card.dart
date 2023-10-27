@@ -4,6 +4,7 @@ import '../pages/user_timeline_page.dart';
 import '../size_config.dart';
 import '../models/user_data.dart';
 import '../pages/travel_details_page.dart';
+import '/push_animation.dart';
 
 class TravelItemCard extends StatelessWidget {
   final User user;
@@ -47,8 +48,8 @@ class TravelItemCard extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
+                  Navigator.of(context).push(
+                      PageRouteUtils.createSlidePageRoute(
                           TravelDetailsPage(user: user, userIndex: userIndex)));
                 },
                 child: Container(
@@ -65,8 +66,8 @@ class TravelItemCard extends StatelessWidget {
               const SizedBox(height: 18),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
+                  Navigator.of(context).push(
+                      PageRouteUtils.createSlidePageRoute(
                           TravelDetailsPage(user: user, userIndex: userIndex)));
                 },
                 child: Flexible(
@@ -83,8 +84,8 @@ class TravelItemCard extends StatelessWidget {
               const SizedBox(height: 16),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
+                  Navigator.of(context).push(
+                      PageRouteUtils.createSlidePageRoute(
                           UserTimelinePage(user: user, userIndex: userIndex)));
                 },
                 child: Row(
@@ -143,23 +144,3 @@ class TravelItemCard extends StatelessWidget {
     );
   }
 }
-
-// Route _createRoute() {
-//   return PageRouteBuilder(
-//     pageBuilder: (context, animation, secondaryAnimation) =>
-//         TravelDetailsPage(), 
-//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-//       const begin = Offset(1.0, 0.0); 
-//       const end = Offset.zero;
-//       const curve = Curves.easeInOut;
-
-//       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-//       var offsetAnimation = animation.drive(tween);
-
-//       return SlideTransition(
-//         position: offsetAnimation,
-//         child: child,
-//       );
-//     },
-//   );
-// }

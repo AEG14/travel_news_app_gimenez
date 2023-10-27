@@ -40,7 +40,7 @@ class UserTimelinePage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        width: SizeConfig.blockSizeHorizontal! * 3,
+                        width: SizeConfig.blockSizeHorizontal! * 0.20,
                       ),
                       Expanded(
                           child: Row(
@@ -114,7 +114,7 @@ class UserTimelinePage extends StatelessWidget {
                       ),
                       Text(
                         "View All",
-                        style: tGellixBold.copyWith(
+                        style: tGellixMedium.copyWith(
                             color: tBlue,
                             fontSize: SizeConfig.blockSizeHorizontal! * 3),
                       )

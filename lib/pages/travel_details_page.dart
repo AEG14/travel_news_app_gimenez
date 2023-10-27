@@ -5,6 +5,7 @@ import '../app_styles.dart';
 import '../size_config.dart';
 import '../models/user_data.dart';
 import 'user_timeline_page.dart';
+import '/push_animation.dart';
 
 class TravelDetailsPage extends StatelessWidget {
   final User user;
@@ -99,8 +100,8 @@ class TravelDetailsPage extends StatelessWidget {
                   border: Border.all(color: borderColor)),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
+                  Navigator.of(context).push(
+                      PageRouteUtils.createSlidePageRoute(
                           UserTimelinePage(user: user, userIndex: userIndex)));
                 },
                 child: Row(
