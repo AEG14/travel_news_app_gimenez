@@ -4,11 +4,16 @@ import '../size_config.dart';
 import '../models/user_data.dart';
 
 class TravelItemCard extends StatelessWidget {
-  const TravelItemCard({Key? key, this.user}) : super(key: key);
-  final User? user;
+  final User user;
+
+  TravelItemCard({required this.user, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String postImage = user.postDetailsData.isNotEmpty
+        ? user.postDetailsData[0].postImage
+        : 'assets/images/maldives3.jpg';
+
     return Padding(
       padding: const EdgeInsets.only(right: 20.0),
       child: Container(
@@ -35,8 +40,7 @@ class TravelItemCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child:
-                    Image.asset('assets/images/Travel1.png', fit: BoxFit.cover),
+                child: Image.asset(postImage, fit: BoxFit.cover),
               ),
               const SizedBox(height: 18),
               Flexible(

@@ -46,15 +46,8 @@ class BotNavBarCard extends StatelessWidget {
         ),
       ],
       currentIndex: selectedIndex,
-      onTap: (index) {
-        if (index == 0) {
-          Navigator.of(context).pushNamed('/');
-        } else if (index == 3) {
-          Navigator.of(context).pushNamed('/user_timeline_page');
-        } else {
-          onItemTapped(index);
-        }
-      },
+      onTap: onItemTapped,
+      // Adjust the height as needed
     );
   }
 }
