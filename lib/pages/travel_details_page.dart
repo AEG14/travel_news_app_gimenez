@@ -14,7 +14,6 @@ class TravelDetailsPage extends StatelessWidget {
   // const TravelDetailsPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final List<String> carouselItems = user.postDetailsData[0].carouselItems;
     SizeConfig().init(context);
     return Scaffold(
       body: SingleChildScrollView(
