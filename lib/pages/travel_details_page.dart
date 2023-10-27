@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../app_styles.dart';
 import '../size_config.dart';
 import '../models/user_data.dart';
+import 'user_timeline_page.dart';
 
 class TravelDetailsPage extends StatelessWidget {
   final User user;
@@ -11,7 +12,6 @@ class TravelDetailsPage extends StatelessWidget {
 
   TravelDetailsPage({required this.user, required this.userIndex, Key? key})
       : super(key: key);
-  // const TravelDetailsPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -97,34 +97,38 @@ class TravelDetailsPage extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: borderColor)),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 13,
-                    backgroundColor: tBlue,
-                    backgroundImage: AssetImage(
-                        // 'assets/images/maldives2.jpg',
-                        user.userProfilePicture),
-                  ),
-                  SizedBox(
-                    width: SizeConfig.blockSizeHorizontal! * 2.5,
-                  ),
-                  Text(
-                    // 'Keanu Carpent  May 17  •  8 min read',
-                    user.firstName +
-                        ' ' +
-                        user.lastName +
-                        ' ' +
-                        user.postDetailsData[0].carouselDate +
-                        '  •  ' +
-                        user.postDetailsData[0].carouselMinRead,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: tGellixRegular.copyWith(
-                        color: tGrey,
-                        fontSize: SizeConfig.blockSizeHorizontal! * 3),
-                  ),
-                ],
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          UserTimelinePage(user: user, userIndex: userIndex)));
+                },
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 13,
+                      backgroundColor: tBlue,
+                      backgroundImage: AssetImage(user.userProfilePicture),
+                    ),
+                    SizedBox(
+                      width: SizeConfig.blockSizeHorizontal! * 2.5,
+                    ),
+                    Text(
+                      user.firstName +
+                          ' ' +
+                          user.lastName +
+                          ' ' +
+                          user.postDetailsData[0].carouselDate +
+                          '  •  ' +
+                          user.postDetailsData[0].carouselMinRead,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: tGellixRegular.copyWith(
+                          color: tGrey,
+                          fontSize: SizeConfig.blockSizeHorizontal! * 3),
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -145,14 +149,7 @@ class TravelDetailsPage extends StatelessWidget {
   }
 }
 
-// final List<String> widget.carouselItems = [
-//   'assets/images/MyTravel1.jpg',
-//   'assets/images/Rectangle.png',
-//   'assets/images/MyTravel2.jpg'
-// ];
-
 class FullScreenSlider extends StatefulWidget {
-  // const FullScreenSlider({Key? key}) : super(key: key);
   final List<String> carouselItems;
   FullScreenSlider({required this.carouselItems, Key? key}) : super(key: key);
   @override

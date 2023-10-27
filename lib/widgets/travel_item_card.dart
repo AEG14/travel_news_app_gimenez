@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../app_styles.dart';
+import '../pages/user_timeline_page.dart';
 import '../size_config.dart';
 import '../models/user_data.dart';
 import '../pages/travel_details_page.dart';
@@ -62,64 +63,78 @@ class TravelItemCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 18),
-              Flexible(
-                child: Text(
-                  postHeader,
-                  style: tGellixSemiBold.copyWith(
-                    fontSize: SizeConfig.blockSizeHorizontal! * 3.5,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          TravelDetailsPage(user: user, userIndex: userIndex)));
+                },
+                child: Flexible(
+                  child: Text(
+                    postHeader,
+                    style: tGellixSemiBold.copyWith(
+                      fontSize: SizeConfig.blockSizeHorizontal! * 3.5,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
               const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 38,
-                        width: 38,
-                        child: ClipOval(
-                          child: Image.asset(user.userProfilePicture,
-                              fit: BoxFit.cover),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          UserTimelinePage(user: user, userIndex: userIndex)));
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 38,
+                          width: 38,
+                          child: ClipOval(
+                            child: Image.asset(user.userProfilePicture,
+                                fit: BoxFit.cover),
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            user.firstName + ' ' + user.lastName,
-                            style: tGellixSemiBold.copyWith(
-                              fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                        SizedBox(width: 12),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              user.firstName + ' ' + user.lastName,
+                              style: tGellixSemiBold.copyWith(
+                                fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                              ),
                             ),
-                          ),
-                          Text(
-                            postDate,
-                            style: tGellixRegular.copyWith(
-                              color: tGrey,
-                              fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                            Text(
+                              postDate,
+                              style: tGellixRegular.copyWith(
+                                color: tGrey,
+                                fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: 37,
-                    width: 37,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: tWhite3,
+                          ],
+                        ),
+                      ],
                     ),
-                    child: Image.asset('assets/images/message.png',
-                        fit: BoxFit.cover),
-                  ),
-                ],
+                    Container(
+                      height: 37,
+                      width: 37,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: tWhite3,
+                      ),
+                      child: Image.asset('assets/images/message.png',
+                          fit: BoxFit.cover),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import '../app_styles.dart';
 import '../size_config.dart';
+import '../models/user_data.dart';
 
 class UserFollowerCard extends StatelessWidget {
+  final User user;
+  final int userIndex;
+
+  UserFollowerCard({required this.user, required this.userIndex, Key? key})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -11,7 +18,7 @@ class UserFollowerCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                '54.21k',
+                user.userTimeLineFollowers,
                 style: tGellixBold.copyWith(
                   color: tWhite,
                   fontSize: SizeConfig.blockSizeHorizontal! * 4,
@@ -39,7 +46,7 @@ class UserFollowerCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                '2.11k',
+                user.userTimeLinePosts,
                 style: tGellixBold.copyWith(
                   color: tWhite,
                   fontSize: SizeConfig.blockSizeHorizontal! * 4,
@@ -67,7 +74,7 @@ class UserFollowerCard extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                '1,415',
+                user.userTimeLineFollowing,
                 style: tGellixBold.copyWith(
                   color: tWhite,
                   fontSize: SizeConfig.blockSizeHorizontal! * 4,
