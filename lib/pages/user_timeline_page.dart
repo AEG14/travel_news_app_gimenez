@@ -18,7 +18,6 @@ class _UserTimelinePageState extends State<UserTimelinePage> {
     return Scaffold(
       backgroundColor: tWhite2,
       body: SingleChildScrollView(
-        // padding: EdgeInsets.symmetric(horizontal: 30),
         child: SafeArea(
             child: Column(
           children: [
