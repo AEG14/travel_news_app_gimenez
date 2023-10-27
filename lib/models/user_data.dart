@@ -66,7 +66,7 @@ class PopularImage {
 
 List<User> topUsers = [
   User(
-    userProfilePicture: 'sampleProfile.png',
+    userProfilePicture: 'assets/images/sampleProfile.png',
     firstName: 'Sang',
     lastName: 'Dong-Min',
     topUserTitle: 'Author & Writer',
@@ -117,7 +117,7 @@ List<User> topUsers = [
     ],
   ),
   User(
-    userProfilePicture: 'aithanProfile2.jpg',
+    userProfilePicture: 'assets/images/aithanProfile2.jpg',
     firstName: 'Aithan',
     lastName: 'Gimenez',
     topUserTitle: 'IT Programmer',
@@ -128,8 +128,9 @@ List<User> topUsers = [
     userTimeLineFollowing: '1,415k',
     postDetailsData: [
       PostDetail(
-        postImage: 'assets/images/MyTravel7.jpg',
-        postHeader: 'A Journey to the Mountains',
+        postImage: 'assets/images/MyTravel1.jpg',
+        postHeader:
+            'A Journey to the Mountains\n with the Greatest and Mightiest Aytan!',
         postDate: 'Oct 25 2021',
         carouselImage1: 'assets/images/MyTravel1.jpg',
         carouselImage2: 'assets/images/MyTravel3.jpg',

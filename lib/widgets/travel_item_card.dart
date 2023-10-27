@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import '../app_styles.dart';
 import '../size_config.dart';
 import '../models/user_data.dart';
+import '../pages/travel_details_page.dart';
 
 class TravelItemCard extends StatelessWidget {
   final User user;
-
-  TravelItemCard({required this.user, Key? key}) : super(key: key);
+  final int userIndex;
+  TravelItemCard({required this.user, required this.userIndex, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     String postImage = user.postDetailsData.isNotEmpty
         ? user.postDetailsData[0].postImage
+        : 'assets/images/maldives3.jpg';
+    String postHeader = user.postDetailsData.isNotEmpty
+        ? user.postDetailsData[0].postHeader
+        : 'assets/images/maldives3.jpg';
+    String postDate = user.postDetailsData.isNotEmpty
+        ? user.postDetailsData[0].postDate
         : 'assets/images/maldives3.jpg';
 
     return Padding(
@@ -34,18 +42,34 @@ class TravelItemCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 164,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
+              GestureDetector(
+                onTap: () {
+                  // Use Navigator to push the travel details page and pass the user index
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          TravelDetailsPage(user: user, userIndex: userIndex),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 164,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(postImage, fit: BoxFit.cover),
+                  ),
                 ),
-                child: Image.asset(postImage, fit: BoxFit.cover),
               ),
               const SizedBox(height: 18),
               Flexible(
                 child: Text(
-                  'Feel the thrill on the only\nsurf simulator in Maldives 2022',
+                  postHeader,
                   style: tGellixSemiBold.copyWith(
                     fontSize: SizeConfig.blockSizeHorizontal! * 3.5,
                   ),
@@ -63,7 +87,7 @@ class TravelItemCard extends StatelessWidget {
                         height: 38,
                         width: 38,
                         child: ClipOval(
-                          child: Image.asset('assets/images/sampleProfile.png',
+                          child: Image.asset(user.userProfilePicture,
                               fit: BoxFit.cover),
                         ),
                       ),
@@ -73,13 +97,13 @@ class TravelItemCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Sang Dong-Min',
+                            user.firstName + ' ' + user.lastName,
                             style: tGellixSemiBold.copyWith(
                               fontSize: SizeConfig.blockSizeHorizontal! * 3,
                             ),
                           ),
                           Text(
-                            'Sep 9 2022',
+                            postDate,
                             style: tGellixRegular.copyWith(
                               color: tGrey,
                               fontSize: SizeConfig.blockSizeHorizontal! * 3,
