@@ -24,7 +24,7 @@ class UserPostsListCard extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               Navigator.of(context).push(PageRouteUtils.createSlidePageRoute(
-                  TravelDetailsPage(user: user, userIndex: userIndex)));
+                  TravelDetailsPage(user: user, userIndex: index)));
             },
             child: Container(
               height: 100,

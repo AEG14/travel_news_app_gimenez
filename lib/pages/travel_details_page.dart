@@ -27,7 +27,8 @@ class TravelDetailsPage extends StatelessWidget {
               child: Stack(
                 children: [
                   FullScreenSlider(
-                      carouselItems: user.postDetailsData[0].carouselItems),
+                      carouselItems:
+                          user.postDetailsData[userIndex].carouselItems),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
@@ -85,7 +86,7 @@ class TravelDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 transform: Matrix4.translationValues(0, -14, 0),
                 child: Text(
-                  user.postDetailsData[0].carouselHeader,
+                  user.postDetailsData[userIndex].carouselHeader,
                   style: tGellixBold.copyWith(
                       fontSize: SizeConfig.blockSizeHorizontal! * 7),
                 )),
@@ -119,9 +120,9 @@ class TravelDetailsPage extends StatelessWidget {
                           ' ' +
                           user.lastName +
                           ' ' +
-                          user.postDetailsData[0].carouselDate +
+                          user.postDetailsData[userIndex].carouselDate +
                           '  •  ' +
-                          user.postDetailsData[0].carouselMinRead,
+                          user.postDetailsData[userIndex].carouselMinRead,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: tGellixRegular.copyWith(
@@ -135,7 +136,7 @@ class TravelDetailsPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 30, right: 24),
               child: Text(
-                user.postDetailsData[0].carouselDescription,
+                user.postDetailsData[userIndex].carouselDescription,
                 style: tGellixMedium.copyWith(
                     fontSize: SizeConfig.blockSizeHorizontal! * 4),
               ),
@@ -170,6 +171,8 @@ class _FullScreenSliderState extends State<FullScreenSlider> {
         CarouselSlider(
           carouselController: _controller,
           options: CarouselOptions(
+            autoPlay: true,
+            autoPlayInterval: Duration(seconds: 5),
             height: SizeConfig.blockSizeVertical! * 50,
             viewportFraction: 1.0,
             enlargeCenterPage: false,

@@ -85,7 +85,8 @@ class ShortNewsCard extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: SizeConfig.blockSizeHorizontal! * 2,
+                                  height:
+                                      SizeConfig.blockSizeHorizontal! * 0.75,
                                 ),
                                 Row(
                                   children: [

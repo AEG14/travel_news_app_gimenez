@@ -18,7 +18,7 @@ List<ShortNews> shortNewsData = [
   ),
   ShortNews(
     shortNewsImage: 'assets/images/chinaBuilding.jpg',
-    shortNewsHeader: 'China best Traditions',
+    shortNewsHeader: 'China best Things',
     viewCount: '22,345',
   ),
   ShortNews(

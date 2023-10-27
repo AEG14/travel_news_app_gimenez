@@ -92,13 +92,13 @@ List<User> topUsers = [
         timelineTime: '09:32 am',
       ),
       PostDetail(
-        postImage: 'assets/images/popularImage2.jpg',
+        postImage: 'assets/images/putin1.jpg',
         postHeader: 'Putin to host ceremony',
         postDate: 'Oct 12, 2023',
         carouselItems: [
-          'assets/images/timelineImage2.png',
-          'assets/images/timelineImage1.png',
-          'assets/images/MyTravel5.jpg',
+          'assets/images/putin1.jpg',
+          'assets/images/putin2.jpg',
+          'assets/images/putin3.jpg',
         ],
         carouselHeader:
             'Putin to host ceremony\nannexing occupied Ukranian country which gives more problems and headaches',
@@ -151,8 +151,8 @@ List<User> topUsers = [
         postHeader: 'Random thing to say here',
         postDate: 'Oct 15 2023',
         carouselItems: [
-          'assets/images/MyTravel7.jpg'
-              'assets/images/MyTravel6.jpg',
+          'assets/images/MyTravel7.jpg',
+          'assets/images/MyTravel6.jpg',
           'assets/images/MyTravel8.jpg',
         ],
         carouselHeader: 'My Tech Stuff',
